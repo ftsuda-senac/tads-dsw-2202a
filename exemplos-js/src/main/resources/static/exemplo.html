@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplos Javascript</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .estilo1 {
+                background-color: blue;
+                color: yellow;
+            }
+        </style>
+        <script>
+            function montarTela() {
+                //let elConteudo = document.getElementById('conteudo');
+                let elConteudo = document.querySelector('#conteudo');
+                elConteudo.classList.add('estilo1');
+                elConteudo.innerHTML = '<h1>Teste de Javascript</h1><h2>Exemplos diversos</h2>';
+
+                let elH1 = document.querySelector('h1');
+                elH1.style.backgroundColor = 'red';
+            }
+            
+            document.addEventListener('DOMContentLoaded', montarTela);
+        </script>
+    </head>
+    <body>
+        <div id="conteudo"></div>
+    </body>
+</html>
