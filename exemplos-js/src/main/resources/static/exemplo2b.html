@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplo JS 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .item {
+                border: 5px dotted #ccc;
+                padding: 5px 10px;
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Exemplo 2 - Carregar lista com HTML complexo</h1>
+        <div id="conteudo">
+            
+        </div>
+        <button id="btncarregar">Carregar informações</button>
+        <script>
+            
+            function montarItem(nome, email, telefone) {
+                let conteudo = '<article class="item"><h2>' + nome + '</h2>' +
+                        '<p>E-mail: <span>' + email + '</span></p>' +
+                        '<p>Telefone: <span>' + telefone + '</span></p></article>';
+                return conteudo;
+            }
+            
+            function carregarInformacoes() {
+                let nome = 'Fulano da Silva';
+                let email = 'fulano@teste.com.br';
+                let telefone = '(11) 99999-1234';
+                for (let i = 0; i < 100; i++) {
+                    let conteudo = montarItem(nome + ' ' + i, email, telefone);
+                    document.getElementById('conteudo')
+                            .insertAdjacentHTML('afterbegin', conteudo);
+                }
+            }
+            
+            document.getElementById('btncarregar').onclick = carregarInformacoes;
+
+        </script>
+    </body>
+</html>

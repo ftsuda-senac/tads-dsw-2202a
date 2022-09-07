@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplo 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .item {
+                border: 5px dotted #ccc;
+                padding: 5px 10px;
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Exemplo 3 - AJAX com XMLHttpRequest</h1>
+        <div id="conteudo">
+            
+        </div>
+        <button id="btncarregar">Carregar informações</button>
+        <script>
+            
+            function montarItem(nome, email, telefone) {
+                let conteudo = '<article class="item"><h2>' + nome + '</h2>' +
+                        '<p>E-mail: <span>' + email + '</span></p>' +
+                        '<p>Telefone: <span>' + telefone + '</span></p></article>';
+                return conteudo;
+            }
+            
+            function carregarInformacoesAjax() {
+                const xhr = new XMLHttpRequest();
+                
+                xhr.open('GET', 'info-ex3.json');
+                
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const dados = JSON.parse(xhr.responseText);
+                        const conteudo = montarItem(dados.nome, dados.email, dados.telefone);
+                        document.getElementById('conteudo').insertAdjacentHTML('beforeend', conteudo);
+                    }
+                };
+                
+                xhr.send();
+            }
+            
+            document.getElementById('btncarregar').onclick = carregarInformacoesAjax;
+        </script>
+    </body>
+</html>
