@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h1 id="titulo">Exemplo 03</h1>
+            <p>Data: <span id="dataHora"></span></p>
+            <p>Número: <span></span></p>
+            <p>Texto direto no template</p>
+        </div>
+        <script>
+            function carregarInformacoesAjax() {
+                const xhr = new XMLHttpRequest();
+                
+                xhr.open('GET', '/exemplos/ex03/json2');
+                
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const dados = JSON.parse(xhr.responseText);
+                        document.getElementById('titulo').innerHTML = dados.titulo;
+                        document.getElementById('dataHora').innerHTML = dados.dataHora;
+                    }
+                };
+                
+                xhr.send();
+            }
+            carregarInformacoesAjax();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplos Spring MVC</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/estilos.css}" />
+    </head>
+    <body>
+        <div>
+            <h1 th:text="${tituloAttr}">Exemplo 03</h1>
+            <p>Data: <span th:text="${dataHoraAttr}"></span></p>
+            <p>Número: <span data-th-text="${numeroAttr}"></span></p>
+            <p>Texto direto no template</p>
+        </div>
+    </body>
+</html>
