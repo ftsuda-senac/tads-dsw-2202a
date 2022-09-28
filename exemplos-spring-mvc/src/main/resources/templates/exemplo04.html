@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplos Spring MVC</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/estilos.css}" />
+    </head>
+    <body>
+        <div>
+            <h1 th:text="${dados.titulo}">Exemplo 03</h1>
+            <p>Data: <span th:text="${dados.dataHora}"></span></p>
+            <p>Número: <span data-th-text="${dados.numero}"></span></p>
+            
+            <div th:each="item : ${dados.outrasInfos}" class="subitem">
+                <p>Título: <span th:text="${item.titulo}"></span></p>
+                <p>Valor: <span th:text="${item.valor}"></span>
+                    <span th:if="${item.verificaPar() == true}">Este número é par</span>
+                    <span th:if="${item.verificaPar() == false}">Este número é impar</span>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,6 +1,7 @@
 package br.senac.tads.dsw.exemplosspringmvc;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Dados {
     
@@ -9,6 +10,8 @@ public class Dados {
     private LocalDateTime dataHora;
     
     private int numero;
+    
+    private List<Subdados> outrasInfos;
     
     public Dados() {
         
@@ -42,6 +45,14 @@ public class Dados {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public List<Subdados> getOutrasInfos() {
+        return outrasInfos;
+    }
+
+    public void setOutrasInfos(List<Subdados> outrasInfos) {
+        this.outrasInfos = outrasInfos;
     }
     
 }
