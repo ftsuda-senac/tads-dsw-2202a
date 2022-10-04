@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,15 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class DadosPessoaisController {
     
-    
     @GetMapping("/dados-pessoais")
     public ModelAndView mostrarFormulario() {
         ModelAndView mv = new ModelAndView("form");
         return mv;
     }
     
-    
-    @PostMapping("/destino-dados")
+    @PostMapping("/destino-dados1")
     public ModelAndView receberDados(
             @RequestParam String nome,
             @RequestParam String email,
@@ -36,6 +35,15 @@ public class DadosPessoaisController {
         
         ModelAndView mv = new ModelAndView("resultado");
         mv.addObject("dados", dados);
+        mv.addObject("origemDados", "destino-dados1");
+        return mv;
+    }
+    
+    @PostMapping("/destino-dados2")
+    public ModelAndView receberDadosDto(@ModelAttribute DadosPessoais dados) {
+        ModelAndView mv = new ModelAndView("resultado");
+        mv.addObject("dados", dados);
+        mv.addObject("origemDados", "destino-dados2 (DTO)");
         return mv;
     }
 }

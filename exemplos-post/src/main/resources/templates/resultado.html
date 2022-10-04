@@ -11,11 +11,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <h1>Resultado</h1>
+            <h1>Resultado via <span th:text="${origemDados}"></span></h1>
             <p>Nome: <span th:text="${dados.nome}"></span></p>
+            <p>Primeiro nome: <span th:text="${dados.primeiroNome}"></span>
             <p>E-mail: <span th:text="${dados.email}"></span></p>
             <p>Telefone: <span th:text="${dados.telefone}"></span></p>
             <p>Data nascimento: <span th:text="${dados.dataNascimento}"></span></p>
+            <p>
+                Idade: <span th:text="${dados.idade}"></span>
+                <span th:if="${dados.maiorIdade == false}" style="background-color: red">MENOR DE IDADE</span>
+            </p>
             <p>Senha: <span th:text="${dados.senha}"></span></p>
         </div>
     </body>
