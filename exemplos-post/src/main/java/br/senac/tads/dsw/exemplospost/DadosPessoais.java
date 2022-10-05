@@ -2,18 +2,30 @@ package br.senac.tads.dsw.exemplospost;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class DadosPessoais {
     
+    @NotBlank(message = "Preencha seu nome seu animal")
+    @Size(max = 100)
     private String nome;
     
+    @NotBlank
+    @Size(max = 100)
+    @Email
     private String email;
     
+    @NotBlank
+    @Size(max = 20)
     private String telefone;
     
     // ISO-8601
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @PastOrPresent
     private LocalDate dataNascimento;
     
     private String senha;
