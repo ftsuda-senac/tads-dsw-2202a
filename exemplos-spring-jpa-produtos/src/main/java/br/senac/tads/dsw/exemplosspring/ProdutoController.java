@@ -32,6 +32,8 @@ import br.senac.tads.dsw.exemplosspring.produto.ImagemProduto;
 import br.senac.tads.dsw.exemplosspring.produto.Produto;
 import br.senac.tads.dsw.exemplosspring.produto.ProdutoRepository;
 import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 /**
  *
@@ -54,10 +56,13 @@ public class ProdutoController {
         List<Produto> resultados = new ArrayList<>();
         if (idsCat != null && !idsCat.isEmpty()) {
             // Busca pelos IDs das categorias informadas
-            //resultados = produtoRepository.findByCategoria(idsCat, offset, qtd);
+            //Page<Produto> resultadosPage = produtoRepository.findDistinctByCategorias_IdIn(idsCat, PageRequest.of(offset/qtd, qtd));
+            ///resultados = resultadosPage.getContent();
+            resultados = produtoRepository.findBlabla(idsCat);
         } else {
             // Lista todos os produtos usando paginacao
-            resultados = produtoRepository.findAll();
+            Page<Produto> resultadosPage = produtoRepository.findAll(PageRequest.of(offset/qtd, qtd));
+            resultados = resultadosPage.getContent();
         }
         return new ModelAndView("produtos/lista").addObject("produtos", resultados);
     }
