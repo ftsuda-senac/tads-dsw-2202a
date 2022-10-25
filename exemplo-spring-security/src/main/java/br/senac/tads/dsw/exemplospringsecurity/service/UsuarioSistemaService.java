@@ -7,23 +7,24 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import br.senac.tads.dsw.exemplospringsecurity.dominio.Papel;
 import br.senac.tads.dsw.exemplospringsecurity.dominio.UsuarioSistema;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
-public class UsuarioSistemaService {
+public class UsuarioSistemaService implements UserDetailsService {
 
     private final Map<String, UsuarioSistema> usuariosCadastrados = new LinkedHashMap<>();
     
-//    private PasswordEncoder passwordEncoder;
-//    
-//    public UsuarioSistemaService(PasswordEncoder passwordEncoder) {
-//        this.passwordEncoder = passwordEncoder;
-//    }
+    private PasswordEncoder passwordEncoder;
+    
+    public UsuarioSistemaService(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     private String gerarHashSenha(String senhaAberta) {
-        // return passwordEncoder.encode(senhaAberta);
-
-        // ***** VERSÃO INICIAL: RETORNANDO SENHA ABERTA - NÃO USAR EM PROJETOS REAIS
-        return senhaAberta;
+        return passwordEncoder.encode(senhaAberta);
     }
 
     @PostConstruct
@@ -38,6 +39,15 @@ public class UsuarioSistemaService {
         usuariosCadastrados.put("professor",
                 new UsuarioSistema("professor", "Sergio Marquina", gerarHashSenha("abcd1234"),
                         Arrays.asList(new Papel("ROLE_PEAO"), new Papel("ROLE_GOD"))));
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UsuarioSistema usuario = usuariosCadastrados.get(username);
+        if (usuario == null) {
+            throw new UsernameNotFoundException("Usuário "+ username + " não encontrado");
+        }
+        return usuario;
     }
 
 }

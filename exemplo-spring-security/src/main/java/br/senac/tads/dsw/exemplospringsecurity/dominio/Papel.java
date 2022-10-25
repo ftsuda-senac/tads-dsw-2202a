@@ -1,6 +1,9 @@
 package br.senac.tads.dsw.exemplospringsecurity.dominio;
 
-public class Papel {
+import java.io.Serializable;
+import org.springframework.security.core.GrantedAuthority;
+
+public class Papel implements GrantedAuthority {
 
     private String nome;
 
@@ -17,6 +20,11 @@ public class Papel {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    @Override
+    public String getAuthority() {
+        return nome;
     }
 
 }
