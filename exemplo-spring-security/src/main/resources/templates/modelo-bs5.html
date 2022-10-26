@@ -30,10 +30,12 @@
                             <a class="nav-link" th:href="@{/sessao}">Exemplo sessão</a>
                         </li>
                     </ul>
+                    <!--
                     <div class="d-flex">
                         <div class="d-inline p-2 text-end text-white">USUARIO</div>
                     </div>
-                    <!--
+                    -->
+
                     <div class="d-flex" sec:authorize="!isAuthenticated()">
                         <a th:href="@{/login}" role="button" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
                     </div>
@@ -41,7 +43,6 @@
                         <div class="d-inline p-2 text-end text-white" sec:authentication="principal.username">USUARIO</div>
                         <a th:href="@{/logout}" role="button" class="btn btn-warning"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
                     </div>
-                    -->
                 </div>
             </div>
         </nav>
