@@ -8,15 +8,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
+// Configuração do Spring Security pós versão 5.7/Boot 2.7
+// https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter
 @Configuration
-@EnableWebSecurity
 @EnableGlobalMethodSecurity(
         prePostEnabled = true,
         securedEnabled = true,
         jsr250Enabled = true
 )
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
     public static PasswordEncoder plainPasswordEncoder() {
         return new PasswordEncoder() {
@@ -43,8 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return bcryptPasswordEncoder();
     }
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // @formatter:off
         http.headers()
                 .cacheControl().disable() // Desabilita controle de cache
@@ -76,6 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     
         // @formatter:on
 
+         return http.build();
     }
 
 }
