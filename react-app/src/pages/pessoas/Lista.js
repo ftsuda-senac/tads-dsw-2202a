@@ -2,22 +2,22 @@
 export default function Lista() {
 
     return (
-        <main class="flex-shrink-0">
-            <div class="container-lg mb-3">
+        <main className="flex-shrink-0">
+            <div className="container-lg mb-3">
                 <h1>Listagem de pessoas (VERSÃO React)</h1>
                 { /*
-                <div class="alert alert-success" role="alert" id="alertaSucesso">
-                    <h4 class="alert-heading">Sucesso</h4>
-                    <p class="mb-0">Texto alerta sucesso</p>
+                <div className="alert alert-success" role="alert" id="alertaSucesso">
+                    <h4 className="alert-heading">Sucesso</h4>
+                    <p className="mb-0">Texto alerta sucesso</p>
                 </div>
-                <div class="alert alert-danger" role="alert" id="alertaErro">
-                    <h4 class="alert-heading">Erro</h4>
-                    <p class="mb-0">Texto alerta erro</p>
+                <div className="alert alert-danger" role="alert" id="alertaErro">
+                    <h4 className="alert-heading">Erro</h4>
+                    <p className="mb-0">Texto alerta erro</p>
                 </div>
                 */ }
 
-                <table class="table table-striped">
-                    <thead class="table-dark">
+                <table className="table table-striped">
+                    <thead className="table-dark">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
@@ -33,43 +33,42 @@ export default function Lista() {
                             <td>Exemplo</td>
                             <td>exemplo@teste.com.br</td>
                             <td>09/06/1970</td>
-                            <td><span class="badge bg-success">ATIVO</span></td>
+                            <td><span className="badge bg-success">ATIVO</span></td>
                             <td>
-                                <div class="btn-group" role="group" aria-label="Ações">
-                                    <a class="btn btn-info" role="button" href="visualizacao.html"><i class="fas fa-eye"></i> Visualizar dados</a>
-                                    <a class="btn btn-primary" role="button" href="form.html"><i class="fas fa-edit"></i> Alterar</a>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir" data-action-url="/classic/pessoas/0/excluir" data-item-id="0"><i class="fas fa-trash-alt"></i> Excluir</button>
+                                <div className="btn-group" role="group" aria-label="Ações">
+                                    <a className="btn btn-info" role="button" href="visualizacao.html"><i className="fas fa-eye"></i> Visualizar dados</a>
+                                    <a className="btn btn-primary" role="button" href="form.html"><i className="fas fa-edit"></i> Alterar</a>
+                                    <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir" data-action-url="/classic/pessoas/0/excluir" data-item-id="0"><i className="fas fa-trash-alt"></i> Excluir</button>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <nav aria-label="Paginação">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item" id="paginacaoPrimeiro">
-                            <a class="page-link"
+                    <ul className="pagination justify-content-center">
+                        <li className="page-item" id="paginacaoPrimeiro">
+                            <a className="page-link"
                                 href="#">Primeiro</a>
                         </li>
-                        <li class="page-item" id="paginacaoAnterior">
-                            <a class="page-link"
+                        <li className="page-item" id="paginacaoAnterior">
+                            <a className="page-link"
                                 href="#">1</a>
                         </li>
-                        <li class="page-item active" id="paginacaoAtual">
-                            <a class="page-link active" href="#">
-                                <span>2</span><span class="sr-only">Página atual</span></a>
+                        <li className="page-item active" aria-current="page" id="paginacaoAtual">
+                            <span className="page-link">2</span>
                         </li>
-                        <li class="page-item" id="paginacaoProximo">
-                            <a class="page-link"
+                        <li className="page-item" id="paginacaoProximo">
+                            <a className="page-link"
                                 href="#">3</a>
                         </li>
-                        <li class="page-item" id="paginacaoUltimo">
-                            <a class="page-link"
+                        <li className="page-item" id="paginacaoUltimo">
+                            <a className="page-link"
                                 href="#">Último</a>
                         </li>
                     </ul>
                 </nav>
                 <div>
-                    <a class="btn btn-lg btn-success" role="button" href="form.html"><i class="fas fa-plus-square"></i> Incluir novo</a>
+                    <a className="btn btn-lg btn-success" role="button" href="form.html"><i className="fas fa-plus-square"></i> Incluir novo</a>
                 </div>
             </div>
         </main>
